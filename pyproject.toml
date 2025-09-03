@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "urfu-teamfinder"
+version = "1.0.0"
+description = ""
+authors = ["desmitry"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+sqlalchemy = "^2.0.42"
+dynaconf = "^3.2.11"
+asyncpg = "^0.30.0"
+ormsgpack = "^1.10.0"
+alembic = "^1.16.4"
+nats-py = "^2.11.0"
+aiogram = "^3.22.0"
+redis = "^6.4.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
