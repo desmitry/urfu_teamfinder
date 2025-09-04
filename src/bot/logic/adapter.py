@@ -116,7 +116,18 @@ class DbAdapter(DbWrapper):
                         )
                     )
                 ).unique().all()
-        # TODO: Sort accounts by most relevance
+        
+        sorting_table: list[tuple[tb.Account, int]] = []
+        for t in accounts:
+            c = 0
+            for tag_id in [tag.id for tag in account.account_tags]:
+                if tag_id in [tag.id for tag in t.account_tags]:
+                    c += 1
+            sorting_table.append((t, c))
+        sorting_table.sort(key=lambda x: x[1], reverse=True)
+
+        accounts = [i[0] for i in sorting_table]
+
         target_account: tb.Account = accounts[page]
         text = txt.account_list(
             target_account,
