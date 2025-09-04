@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-09-04 16:10+0500\n"
+"POT-Creation-Date: 2025-09-05 00:13+0500\n"
 "PO-Revision-Date: 2025-09-03 15:04+0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -21,64 +21,111 @@ msgstr ""
 
 #: src/bot/logic/adapter.py:28 src/bot/logic/handlers/command.py:63
 msgid "main_menu.text"
-msgstr "<b>⌛ Быстрый поиск ментора по Вашим интересам!</b>\n"
+msgstr ""
+"<b>⌛ Быстрый поиск ментора по Вашим интересам!</b>\n"
 "\n"
-"Растеряны в выборе ментора? Благодаря боту GoFindMe, Вы найдете себе ментора за считанные минуты\n"
-"Выбирайте подходящие теги, заполняйте свою анкету и лайкайте нужного ментора.\n"
-"📨 Он увидет вашу заявку и сможет откликнуться!"
+"Растеряны в выборе ментора? Благодаря боту GoFindMe, Вы найдете себе "
+"ментора за считанные минуты\n"
+"\n"
+"Выбирайте подходящие теги, заполняйте свою анкету и лайкайте нужного "
+"ментора. Он увидет вашу заявку и сможет откликнуться!"
 
-#: src/bot/logic/adapter.py:179
+#: src/bot/logic/adapter.py:188 src/bot/logic/handlers/account.py:255
 msgid "account_tag_list.text"
-msgstr "<b>🏷️ Мои теги</b>"
+msgstr "<b>🏷️ Мои Теги</b>"
 
 #: src/bot/logic/middlewares.py:19
 msgid "general.query_answer.menu_expired"
-msgstr "Данное меню истекло!\n\nВоспользуйтесь командой /start!"
+msgstr ""
+"Данное меню истекло!\n"
+"\n"
+"Воспользуйтесь командой /start!"
+
+#: src/bot/logic/handlers/account.py:344
+msgid "announcement.text.someone_liked_you"
+msgstr "<b>👍 Вас лайкнул студент, теперь его можно найти в анкетах!</b>"
+
+#: src/bot/logic/handlers/account.py:369
+msgid "announcement.text.match_found"
+msgstr "<b>🎉 Вы нашли друг друга!</b>"
+
+#: src/bot/logic/handlers/account.py:414
+#, fuzzy
+msgid "dialogue.account_image.text"
+msgstr "<b>Отправьте изображение для анкеты!</b>"
+
+#: src/bot/logic/handlers/account.py:448
+#, fuzzy
+msgid "dialogue.account_full_name.text"
+msgstr "<b>Отправьте Ваше полное имя!</b>"
+
+#: src/bot/logic/handlers/account.py:482
+#, fuzzy
+msgid "dialogue.account_description.text"
+msgstr ""
+"<b>Отправьте Вашу анкету одним сообщением, можно применять "
+"форматирование!</b>"
 
 #: src/bot/logic/handlers/command.py:57
 msgid "registration_menu.text"
-msgstr "<b>Привет!</b>\n"
+msgstr ""
+"<b>👋 Приветствую!</b>\n"
 "\n"
 "🪪 Выберите свою роль!"
 
-#: src/bot/markup/inline/account.py:48 src/bot/markup/inline/account.py:138
-#: src/bot/markup/inline/account.py:174 src/bot/markup/inline/account.py:221
+#: src/bot/markup/inline/account.py:48 src/bot/markup/inline/account.py:140
+#: src/bot/markup/inline/account.py:213 src/bot/markup/inline/dialogue.py:22
 msgid "general.button.back"
 msgstr "< Назад"
 
-#: src/bot/markup/inline/account.py:55 src/bot/markup/inline/account.py:230
-msgid "general.button.home"
-msgstr "« Домой"
-
-#: src/bot/markup/inline/account.py:74
+#: src/bot/markup/inline/account.py:65
 msgid "main_menu.button.browse"
 msgstr "🧬 Анкеты"
 
-#: src/bot/markup/inline/account.py:86
+#: src/bot/markup/inline/account.py:77
 msgid "main_menu.button.account_menu"
 msgstr "💼 Профиль"
 
-#: src/bot/markup/inline/account.py:105
+#: src/bot/markup/inline/account.py:96
 msgid "account_menu.button.set_image"
 msgstr "📸 Фотография"
 
-#: src/bot/markup/inline/account.py:116
+#: src/bot/markup/inline/account.py:107
 msgid "account_menu.button.set_name"
 msgstr "✏️ Имя"
 
-#: src/bot/markup/inline/account.py:127
+#: src/bot/markup/inline/account.py:118
 msgid "account_menu.button.set_description"
 msgstr "✏️ Анкета"
 
-#: src/bot/markup/inline/account.py:162
-msgid "account_list.button.like"
-msgstr "Мне нравится!"
+#: src/bot/markup/inline/account.py:129
+#, fuzzy
+msgid "account_menu.button.my_tags"
+msgstr "🏷️ Мои Теги"
 
-#: src/bot/markup/inline/account.py:249
+#: src/bot/markup/inline/account.py:163
+#, fuzzy
+msgid "account_list.button.unlike"
+msgstr "💔 Убрать Лайк"
+
+#: src/bot/markup/inline/account.py:166
+msgid "account_list.button.like"
+msgstr "❤️ Лайк"
+
+#: src/bot/markup/inline/account.py:222 src/bot/markup/inline/dialogue.py:31
+msgid "general.button.home"
+msgstr "« Домой"
+
+#: src/bot/markup/inline/account.py:241
 msgid "registration_menu.button.student"
 msgstr "👩‍🎓 Студент"
 
-#: src/bot/markup/inline/account.py:261
+#: src/bot/markup/inline/account.py:253
 msgid "registration_menu.button.mentor"
 msgstr "👨‍🏫 Ментор"
+
+#: src/bot/markup/inline/misc.py:14
+#, fuzzy
+msgid "general.button.hide"
+msgstr "Спрятать"
 

@@ -87,34 +87,42 @@ class DbAdapter(DbWrapper):
                     join=(
                         (
                             tb.Account.likes,
+                            tb.Like.liker_account,
+                            tb.Account.account_tags,
+                            tb.AccountTag.tag
                         ),
-                    )
-                )
-            ).one()
-        match account.type:
-            case "mentor":
-                likes = (
-                    await self.scalars(
-                        tb.Like,
-                        tb.Like.liked_account_id == account.id,
-                        join=(
-                            (
-                                tb.Like.liker_account.of_type(tb.Student),
-                                tb.Student.account_tags,
-                                tb.AccountTag.tag
-                            ),
+                        (
+                            tb.Account.liked_by,
+                            tb.Like.liker_account,
+                            tb.Account.account_tags,
+                            tb.AccountTag.tag
+                        ),
+                        (
+                            tb.Account.account_tags,
+                            tb.AccountTag.tag
                         )
                     )
-                ).unique().all()
-                accounts = [l.liker_account for l in likes if l.liker_account.is_active]
+                )
+            ).unique().one()
+        match account.type:
+            case "mentor":
+                accounts = [
+                    l.liker_account for l in account.liked_by
+                    if l.liker_account.is_active
+                    and l.liker_account.type == "student"
+                ]
             case "student":
                 accounts = (
                     await self.scalars(
-                        tb.Mentor,
-                        tb.Mentor.is_active == True,
+                        tb.Account,
+                        tb.Account.type == "mentor",
+                        tb.Account.is_active == True,
                         join=(
                             (
-                                tb.Mentor.account_tags,
+                                tb.Account.liked_by,
+                            ),
+                            (
+                                tb.Account.account_tags,
                                 tb.AccountTag.tag
                             ),
                         )
@@ -125,8 +133,8 @@ class DbAdapter(DbWrapper):
         sorting_table: list[tuple[tb.Account, int]] = []
         for t in accounts:
             c = 0
-            for tag_id in [tag.id for tag in account.account_tags]:
-                if tag_id in [tag.id for tag in t.account_tags]:
+            for tag_id in [at.tag.id for at in account.account_tags]:
+                if tag_id in [at.tag.id for at in t.account_tags]:
                     c += 1
             sorting_table.append((t, c))
         sorting_table.sort(key=lambda x: x[1], reverse=True)
@@ -145,7 +153,7 @@ class DbAdapter(DbWrapper):
                 i18n,
                 locale
             ),
-            account.image
+            target_account.image
         )
 
     async def account_tag_list_response(

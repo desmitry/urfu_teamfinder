@@ -8,10 +8,10 @@ from sqlalchemy.orm import relationship, mapped_column
 class Account(Base):
     """Represents user account."""
 
-    type = Column(Text)
+    type = Column(Text, nullable=False)
 
     is_active = Column(Boolean, default=True, nullable=False)
-    chat_id = Column(BigInteger, nullable=False)
+    chat_id = Column(BigInteger, unique=True, nullable=False)
     handle = Column(Text, nullable=True)
     full_name = Column(Text, nullable=False)
     description = Column(Text, nullable=True)
@@ -30,12 +30,6 @@ class Account(Base):
         back_populates="liked_account",
         foreign_keys = "Like.liked_account_id"
     )
-
-    __mapper_args__ = {
-        "polymorphic_on": type,
-        "polymorphic_identity": "account",
-        "with_polymorphic": "*"
-    }
 
 
 class Like(Base):
@@ -80,39 +74,3 @@ class Tag(Base):
     account_tags = relationship(
         "AccountTag", back_populates="tag"
     )
-
-
-class Mentor(Account):
-    """Represents mentor account."""
-
-    id = mapped_column(
-        Integer,
-        ForeignKey("account.id"),
-        primary_key=True,
-        autoincrement=True,
-        unique=True,
-        nullable=False,
-        sort_order=-2
-    )
-
-    __mapper_args__ = {
-        "polymorphic_identity": "mentor"
-    }
-
-
-class Student(Account):
-    """Represents student account."""
-
-    id = mapped_column(
-        Integer,
-        ForeignKey("account.id"),
-        primary_key=True,
-        autoincrement=True,
-        unique=True,
-        nullable=False,
-        sort_order=-2
-    )
-
-    __mapper_args__ = {
-        "polymorphic_identity": "student"
-    }

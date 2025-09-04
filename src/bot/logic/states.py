@@ -9,5 +9,3 @@ class Dialogue(StatesGroup):
     AccountFullName = State()
     AccountDescription = State()
     AccountImage = State()
-
-    AnnouncementText = State()

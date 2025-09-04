@@ -50,15 +50,6 @@ def paginated_menu_builder(
                 locale=locale
             ),
             callback_data=back_action.pack()
-        ),
-        InlineKeyboardButton(
-            text=i18n.gettext(
-                "general.button.home",
-                locale=locale
-            ),
-            callback_data=MenuAction(
-                action="show_main_menu"
-            ).pack()
         )
     )
     return builder
@@ -107,7 +98,7 @@ def account_menu(
                 locale=locale
             ),
             callback_data=MenuAction(
-                action="set_account_image"
+                action="ask_account_image"
             ).pack()
         )
     )
@@ -118,7 +109,7 @@ def account_menu(
                 locale=locale
             ),
             callback_data=MenuAction(
-                action="set_account_full_name"
+                action="ask_account_full_name"
             ).pack()
         )
     )
@@ -129,7 +120,18 @@ def account_menu(
                 locale=locale
             ),
             callback_data=MenuAction(
-                action="set_account_description"
+                action="ask_account_description"
+            ).pack()
+        )
+    )
+    builder.row(
+        InlineKeyboardButton(
+            text=i18n.gettext(
+                "account_menu.button.my_tags",
+                locale=locale
+            ),
+            callback_data=MenuAction(
+                action="show_account_tag_list"
             ).pack()
         )
     )
@@ -156,27 +158,17 @@ def account_list(
 ) -> InlineKeyboardMarkup:
     builder = InlineKeyboardBuilder()
     target_account: tb.Account = accounts[page]
-    prefix = ""
     builder.row(
         InlineKeyboardButton(
             text=i18n.gettext(
-                "account_list.button.like",
+                "account_list.button.unlike",
                 locale=locale
+            ) if target_account.id in [l.liked_account_id for l in account.likes] else i18n.gettext(
+                "account_list.button.like",
             ),
             callback_data=EntryAction(
                 action="toggle_account_like",
                 entry_id=target_account.id
-            ).pack()
-        )
-    )
-    builder.row(
-        InlineKeyboardButton(
-            text=i18n.gettext(
-                "general.button.back",
-                locale=locale
-            ),
-            callback_data=MenuAction(
-                action="show_main_menu"
             ).pack()
         )
     )

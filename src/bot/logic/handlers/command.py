@@ -77,7 +77,7 @@ async def register_account_send_main_menu(
         {
             "menu_message_id": answer.message_id,
             "entry_data": {
-                "page": None
+                "page": 0
             }
         }
     )

@@ -1,5 +1,5 @@
 from typing import Iterable
-from sqlalchemy import ScalarResult, select, TIMESTAMP, Integer, text
+from sqlalchemy import ScalarResult, select, TIMESTAMP, Integer
 from sqlalchemy.sql.functions import now
 from sqlalchemy.orm import joinedload, mapped_column
 from sqlalchemy.ext.asyncio.session import AsyncSession
