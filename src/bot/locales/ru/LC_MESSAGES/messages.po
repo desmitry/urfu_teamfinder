@@ -21,58 +21,64 @@ msgstr ""
 
 #: src/bot/logic/adapter.py:28 src/bot/logic/handlers/command.py:63
 msgid "main_menu.text"
-msgstr ""
+msgstr "<b>⌛ Быстрый поиск ментора по Вашим интересам!</b>\n"
+"\n"
+"Растеряны в выборе ментора? Благодаря боту GoFindMe, Вы найдете себе ментора за считанные минуты\n"
+"Выбирайте подходящие теги, заполняйте свою анкету и лайкайте нужного ментора.\n"
+"📨 Он увидет вашу заявку и сможет откликнуться!"
 
 #: src/bot/logic/adapter.py:179
 msgid "account_tag_list.text"
-msgstr ""
+msgstr "<b>🏷️ Мои теги</b>"
 
 #: src/bot/logic/middlewares.py:19
 msgid "general.query_answer.menu_expired"
-msgstr ""
+msgstr "Данное меню истекло!\n\nВоспользуйтесь командой /start!"
 
 #: src/bot/logic/handlers/command.py:57
 msgid "registration_menu.text"
-msgstr ""
+msgstr "<b>Привет!</b>\n"
+"\n"
+"🪪 Выберите свою роль!"
 
 #: src/bot/markup/inline/account.py:48 src/bot/markup/inline/account.py:138
 #: src/bot/markup/inline/account.py:174 src/bot/markup/inline/account.py:221
 msgid "general.button.back"
-msgstr ""
+msgstr "< Назад"
 
 #: src/bot/markup/inline/account.py:55 src/bot/markup/inline/account.py:230
 msgid "general.button.home"
-msgstr ""
+msgstr "« Домой"
 
 #: src/bot/markup/inline/account.py:74
 msgid "main_menu.button.browse"
-msgstr ""
+msgstr "🧬 Анкеты"
 
 #: src/bot/markup/inline/account.py:86
 msgid "main_menu.button.account_menu"
-msgstr ""
+msgstr "💼 Профиль"
 
 #: src/bot/markup/inline/account.py:105
 msgid "account_menu.button.set_image"
-msgstr ""
+msgstr "📸 Фотография"
 
 #: src/bot/markup/inline/account.py:116
 msgid "account_menu.button.set_name"
-msgstr ""
+msgstr "✏️ Имя"
 
 #: src/bot/markup/inline/account.py:127
 msgid "account_menu.button.set_description"
-msgstr ""
+msgstr "✏️ Анкета"
 
 #: src/bot/markup/inline/account.py:162
 msgid "account_list.button.like"
-msgstr ""
+msgstr "Мне нравится!"
 
 #: src/bot/markup/inline/account.py:249
 msgid "registration_menu.button.student"
-msgstr ""
+msgstr "👩‍🎓 Студент"
 
 #: src/bot/markup/inline/account.py:261
 msgid "registration_menu.button.mentor"
-msgstr ""
+msgstr "👨‍🏫 Ментор"
 
