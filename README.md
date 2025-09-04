@@ -81,8 +81,8 @@ Telegram-бот для студентов ИРИТ-РТФ, который пом
 
 5. Заходим в контейнер бота:
    ```
-   docker exec -it --rm urfu_teamfinder-scripts /bin/bash
-   poetry run python scripts/create_app_tables.py
+   docker run -it --rm --network urfu_teamfinder_default urfu_teamfinder-scripts:1.0.0
+   poetry run python -m scripts.create_app_tables
    exit
    ```
 
