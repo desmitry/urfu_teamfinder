@@ -13,7 +13,7 @@ asyncpg = "^0.30.0"
 ormsgpack = "^1.10.0"
 alembic = "^1.16.4"
 nats-py = "^2.11.0"
-aiogram = "^3.22.0"
+aiogram = {extras = ["i18n"], version = "^3.22.0"}
 redis = "^6.4.0"
 
 

@@ -19,7 +19,7 @@ services:
     volumes:
       - "pgdata:/var/lib/postgresql/data"
   bot:
-    container_name: "arnishop-bot"
+    container_name: "urfu_teamfinder-bot"
     image: "ghcr.io/desmitry/urfu_teamfinder-bot:1.0.0"
     stop_signal: SIGTERM
     restart: "unless-stopped"
