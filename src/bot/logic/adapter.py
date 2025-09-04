@@ -5,7 +5,7 @@ from aiogram.types import InlineKeyboardMarkup
 from aiogram.utils.i18n import I18n
 
 from src.core.postgres.wrapper import DbWrapper
-import src.bot.text.user as txt
+import src.bot.text.account as txt
 import src.bot.markup.inline as kb
 import src.core.postgres.bot as tb
 
@@ -49,13 +49,17 @@ class DbAdapter(DbWrapper):
                 await self.scalars(
                     tb.Account,
                     tb.Account.chat_id == account_chat_id,
+                    join=(
+                        (
+                            tb.Account.account_tags,
+                            tb.AccountTag.tag
+                        ),
+                    )
                 )
-            ).one()
+            ).unique().one()
         return ResponseData(
             txt.account_menu(
-                account,
-                i18n,
-                locale
+                account
             ),
             kb.account_menu(
                 i18n,
@@ -116,7 +120,8 @@ class DbAdapter(DbWrapper):
                         )
                     )
                 ).unique().all()
-        
+
+        # Sort by relevance
         sorting_table: list[tuple[tb.Account, int]] = []
         for t in accounts:
             c = 0
@@ -125,14 +130,11 @@ class DbAdapter(DbWrapper):
                     c += 1
             sorting_table.append((t, c))
         sorting_table.sort(key=lambda x: x[1], reverse=True)
-
         accounts = [i[0] for i in sorting_table]
 
         target_account: tb.Account = accounts[page]
-        text = txt.account_list(
-            target_account,
-            i18n,
-            locale
+        text = txt.account_menu(
+            target_account
         )
         return ResponseData(
             text,
@@ -185,14 +187,3 @@ class DbAdapter(DbWrapper):
                 locale
             )
         )
-
-    async def update_account_bio(
-        self,
-        account: tb.Account,
-        username: str | None
-    ) -> None:
-        handle: str | None = username
-        if handle is not None:
-            handle = handle.lower()
-        account.handle = handle
-        account.is_active = True

@@ -12,7 +12,7 @@ class Account(Base):
 
     is_active = Column(Boolean, default=True, nullable=False)
     chat_id = Column(BigInteger, nullable=False)
-    handle = Column(Text, nullable=False)
+    handle = Column(Text, nullable=True)
     full_name = Column(Text, nullable=False)
     description = Column(Text, nullable=True)
     image = Column(LargeBinary, nullable=True)
@@ -22,11 +22,13 @@ class Account(Base):
     )
     likes = relationship(
         "Like",
-        back_populates="liker_account"
+        back_populates="liker_account",
+        foreign_keys="Like.liker_account_id"
     )
     liked_by = relationship(
         "Like",
-        back_populates="liked_account"
+        back_populates="liked_account",
+        foreign_keys = "Like.liked_account_id"
     )
 
     __mapper_args__ = {
@@ -45,12 +47,14 @@ class Like(Base):
     liker_account = relationship(
         "Account",
         back_populates="likes",
-        foreign_keys=[liker_account_id]
+        foreign_keys="Like.liker_account_id",
+        uselist=False
     )
     liked_account = relationship(
         "Account",
         back_populates="liked_by",
-        foreign_keys=[liked_account_id]
+        foreign_keys="Like.liked_account_id",
+        uselist=False
     )
 
 
@@ -61,10 +65,10 @@ class AccountTag(Base):
     tag_id = Column(Integer, ForeignKey("tag.id"))
 
     account = relationship(
-        "Account", back_populates="account_tags"
+        "Account", back_populates="account_tags", uselist=False
     )
     tag = relationship(
-        "Tag", back_populates="account_tags"
+        "Tag", back_populates="account_tags", uselist=False
     )
 
 
@@ -83,7 +87,7 @@ class Mentor(Account):
 
     id = mapped_column(
         Integer,
-        ForeignKey(Account.id),
+        ForeignKey("account.id"),
         primary_key=True,
         autoincrement=True,
         unique=True,
@@ -101,7 +105,7 @@ class Student(Account):
 
     id = mapped_column(
         Integer,
-        ForeignKey(Account.id),
+        ForeignKey("account.id"),
         primary_key=True,
         autoincrement=True,
         unique=True,

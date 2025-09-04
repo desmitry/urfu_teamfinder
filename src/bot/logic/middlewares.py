@@ -3,7 +3,6 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from aiogram import BaseMiddleware
 from aiogram.types import TelegramObject
 from src.bot.logic.adapter import DbAdapter
-import src.core.postgres.bot.schema as tb
 
 
 class MenuVerifierMiddleware(BaseMiddleware):

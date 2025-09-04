@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-09-03 15:03+0500\n"
+"POT-Creation-Date: 2025-09-04 16:10+0500\n"
 "PO-Revision-Date: 2025-09-03 15:04+0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -18,4 +18,61 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
+
+#: src/bot/logic/adapter.py:28 src/bot/logic/handlers/command.py:63
+msgid "main_menu.text"
+msgstr ""
+
+#: src/bot/logic/adapter.py:179
+msgid "account_tag_list.text"
+msgstr ""
+
+#: src/bot/logic/middlewares.py:19
+msgid "general.query_answer.menu_expired"
+msgstr ""
+
+#: src/bot/logic/handlers/command.py:57
+msgid "registration_menu.text"
+msgstr ""
+
+#: src/bot/markup/inline/account.py:48 src/bot/markup/inline/account.py:138
+#: src/bot/markup/inline/account.py:174 src/bot/markup/inline/account.py:221
+msgid "general.button.back"
+msgstr ""
+
+#: src/bot/markup/inline/account.py:55 src/bot/markup/inline/account.py:230
+msgid "general.button.home"
+msgstr ""
+
+#: src/bot/markup/inline/account.py:74
+msgid "main_menu.button.browse"
+msgstr ""
+
+#: src/bot/markup/inline/account.py:86
+msgid "main_menu.button.account_menu"
+msgstr ""
+
+#: src/bot/markup/inline/account.py:105
+msgid "account_menu.button.set_image"
+msgstr ""
+
+#: src/bot/markup/inline/account.py:116
+msgid "account_menu.button.set_name"
+msgstr ""
+
+#: src/bot/markup/inline/account.py:127
+msgid "account_menu.button.set_description"
+msgstr ""
+
+#: src/bot/markup/inline/account.py:162
+msgid "account_list.button.like"
+msgstr ""
+
+#: src/bot/markup/inline/account.py:249
+msgid "registration_menu.button.student"
+msgstr ""
+
+#: src/bot/markup/inline/account.py:261
+msgid "registration_menu.button.mentor"
+msgstr ""
 

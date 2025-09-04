@@ -129,7 +129,7 @@ def account_menu(
                 locale=locale
             ),
             callback_data=MenuAction(
-                action="set_account_image"
+                action="set_account_description"
             ).pack()
         )
     )

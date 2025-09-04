@@ -62,10 +62,11 @@ async def show_main_menu(
             tb.Account.chat_id == query.from_user.id
         )
     ).one()
-    await db.update_account_bio(
-        account,
-        query.from_user.username
-    )
+    handle: str | None = query.from_user.username
+    if handle is not None:
+        handle = handle.lower()
+    account.handle = handle
+    account.is_active = True
     await db.commit()
     response_data: ResponseData = await db.main_menu_response(
         i18n,

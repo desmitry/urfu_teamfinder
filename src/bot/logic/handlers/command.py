@@ -46,13 +46,13 @@ async def register_account_send_main_menu(
             await i18n_middleware.set_locale(state, message.from_user.language_code)
         else:
             await i18n_middleware.set_locale(state, "ru")
-    await db.update_account_bio(
-        account,
-        message.from_user.username
-    )
+    handle: str | None = message.from_user.username
+    if handle is not None:
+        handle = handle.lower()
+    account.handle = handle
+    account.is_active = True
     locale = (await state.get_data())["locale"]
     await state.set_state(MenuState.Menu)
-    await db.commit()
     if account.type == "account":
         text = i18n.gettext(
             "registration_menu.text",
@@ -72,6 +72,7 @@ async def register_account_send_main_menu(
         caption=text,
         reply_markup=markup
     )
+    await db.commit()
     await state.update_data(
         {
             "menu_message_id": answer.message_id,
