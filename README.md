@@ -45,7 +45,7 @@ Telegram-бот для студентов ИРИТ-РТФ, который пом
 ## Развертывание на сервере
 
 ### Подготовка окружения (один раз)
-1. Установите Docker, Docker Compose v2 и git.  
+1. Установите Docker, Docker Compose и Git.  
   Пример для Ubuntu:
    ```
    sudo apt update && sudo apt install -y docker.io docker-compose-v2 git
