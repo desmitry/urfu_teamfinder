@@ -2,7 +2,7 @@ from sqlalchemy import (
     Column, Text, Boolean, Integer, ForeignKey, BigInteger, LargeBinary
 )
 from src.core.postgres.wrapper import Base
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, mapped_column
 
 
 class Account(Base):
@@ -45,12 +45,12 @@ class Like(Base):
     liker_account = relationship(
         "Account",
         back_populates="likes",
-        foreign_keys=[liker_account_id],
+        foreign_keys=[liker_account_id]
     )
     liked_account = relationship(
         "Account",
         back_populates="liked_by",
-        foreign_keys=[liked_account_id],
+        foreign_keys=[liked_account_id]
     )
 
 
@@ -81,6 +81,16 @@ class Tag(Base):
 class Mentor(Account):
     """Represents mentor account."""
 
+    id = mapped_column(
+        Integer,
+        ForeignKey(Account.id),
+        primary_key=True,
+        autoincrement=True,
+        unique=True,
+        nullable=False,
+        sort_order=-2
+    )
+
     __mapper_args__ = {
         "polymorphic_identity": "mentor"
     }
@@ -88,6 +98,16 @@ class Mentor(Account):
 
 class Student(Account):
     """Represents student account."""
+
+    id = mapped_column(
+        Integer,
+        ForeignKey(Account.id),
+        primary_key=True,
+        autoincrement=True,
+        unique=True,
+        nullable=False,
+        sort_order=-2
+    )
 
     __mapper_args__ = {
         "polymorphic_identity": "student"
